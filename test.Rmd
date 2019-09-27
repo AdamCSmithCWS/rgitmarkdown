@@ -1,0 +1,86 @@
+---
+title: "testing"
+author: "Adam C Smith"
+date: "September 26, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(tidyverse)
+library(tidyr)
+library(ggrepel)
+# library(purrr)
+# library(repurrrsive)
+# library(gganimate)
+library(gapminder)
+#library(gifski)
+```
+
+## Introduction
+
+This is a list
+* AMRO 
+* BLJA 
+* COHA 
+
+## mathy
+
+$$y = \mu + \beta*x_i  $$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+summary(gapminder)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE, fig.cap = "1997"}
+gap97 = filter(gapminder,year == 1997)
+ggplot(data = gap97,aes (x = gdpPercap,y = lifeExp,colour = continent))+
+  geom_point(aes(size = pop))
+#+
+ # geom_label_repel(aes(label = country),size = 1)
+```
+```{r, echo=FALSE, fig.cap = "2007"}
+gap07 = filter(gapminder,year == 2007)
+ggplot(data = gap07,aes (x = gdpPercap,y = lifeExp,colour = continent))+
+  geom_point(aes(size = pop))
+#+
+ # geom_label_repel(aes(label = country),size = 1)
+```
+
+I see that the mean gdp/capita has increased from `r round(mean(gap97$gdpPercap))` in 1997 to `r round(mean(gap07$gdpPercap))` in 2007
+
+
+<!-- ```{r chunk-label, fig.show='animate', dev='png', echo = F} -->
+<!-- labls = gapminder[gapminder$country == "Canada",] -->
+<!-- ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) + -->
+<!--   geom_point(alpha = 0.7, show.legend = FALSE) + -->
+<!--   #scale_colour_manual(values = country_colors) + -->
+<!--   scale_size(range = c(2, 12)) + -->
+<!--   scale_x_log10() + -->
+<!--   ggrepel::geom_label_repel(data = labls,aes(label = country))+ -->
+<!--   # Here comes the gganimate specific bits -->
+<!--   labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') + -->
+<!--   transition_time(year) + -->
+<!--   ease_aes('linear') -->
+<!-- ``` -->
